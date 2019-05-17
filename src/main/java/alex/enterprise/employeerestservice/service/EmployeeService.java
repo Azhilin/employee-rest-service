@@ -31,11 +31,12 @@ public class EmployeeService {
         }
 
         employeeDao.save(employee);
-
         Integer id = employee.getId();
-
         Optional<Employee> employeeOptional = employeeDao.findById(id);
-
         return employeeOptional.orElseThrow(() -> new CustomRuntimeException(String.format("Stored employee was not found with particular id: %s", id)));
+    }
+
+    public void addList(List<Employee> employees) {
+        employees.forEach(employee -> employeeDao.save(employee));
     }
 }

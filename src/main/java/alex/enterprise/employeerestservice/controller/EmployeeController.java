@@ -35,4 +35,14 @@ public class EmployeeController {
 
         return employeeService.add(employee);
     }
+
+    @PutMapping("/addlist")
+    public List<Employee> addList(@RequestBody List<Employee> employees) {
+        if (employees.isEmpty()) {
+            throw new CustomRuntimeException("No employees to add!");
+        }
+
+        employeeService.addList(employees);
+        return employeeService.getAll();
+    }
 }
