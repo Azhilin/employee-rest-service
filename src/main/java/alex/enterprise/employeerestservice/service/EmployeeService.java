@@ -22,7 +22,8 @@ public class EmployeeService {
     }
 
     public Employee getById(Integer id) {
-        return employeeDao.findById(id).orElseThrow(() -> new CustomRuntimeException(String.format("Employee was not found with particular id: %s", id)));
+        return employeeDao.findById(id).orElseThrow(() ->
+                new CustomRuntimeException(String.format("Employee was not found with particular id: %s", id)));
     }
 
     public Employee add(Employee employee) {
